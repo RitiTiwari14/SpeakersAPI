@@ -109,3 +109,5 @@ UpgradeLog*.XML
 
 #Ravendb embedded ignore
 SpeakersAPI/Data/
+SpeakersAPI/Raven.Studio.xap
+SpeakersAPI/Raven/
