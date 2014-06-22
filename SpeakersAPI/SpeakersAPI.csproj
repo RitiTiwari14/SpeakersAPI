@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Modules\SessionModule.cs" />
+    <Compile Include="Modules\SpeakerModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\HomeModule.cs" />
   </ItemGroup>
