@@ -9,17 +9,28 @@ namespace SpeakersAPI.Data
 {
     public class RavenDBConfigurationWrapper
     {
-        public IDocumentStore DocumentStore { get; private set; }
+        public readonly IDocumentStore DocumentStore;
 
         public RavenDBConfigurationWrapper()
         {
             DocumentStore = new EmbeddableDocumentStore()
             {
-                DataDirectory= "Data",
+                DataDirectory = "Data",
                 UseEmbeddedHttpServer = false,
             };
 
-            DocumentStore.Initialize();
+            try
+            {
+                DocumentStore.Initialize();
+            }
+            catch (Exception ex)
+            {
+                throw new RavenDBInitializeException();
+            }
         }
+    }
+
+    public class RavenDBInitializeException : Exception
+    {
     }
 }
