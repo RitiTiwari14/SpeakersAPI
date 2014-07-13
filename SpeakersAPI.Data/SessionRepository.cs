@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Raven.Client;
 using SpeakersAPI.Data.Interfaces;
+using SpeakersAPI.Data.Documents;
 
 namespace SpeakersAPI.Data
 {
@@ -60,14 +61,5 @@ namespace SpeakersAPI.Data
             return result;
         }
 
-    }
-
-    public class SessionDocument
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime DateOfStart { get; set; }
-        public DateTime DateOfEnd { get; set; }
-    }
+    }    
 }
