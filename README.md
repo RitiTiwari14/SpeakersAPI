@@ -16,5 +16,5 @@ Resources :
 	: /sessions/{id} - GET
 
 TEST Site :
-apidevday.azurewebsites.net works on faked repositories.
+http://apidevday.azurewebsites.net works on faked repositories.
 
