@@ -9,18 +9,20 @@ namespace SpeakersAPI.Modules
 {
     public class SpeakerModule : NancyModule
     {
+        private readonly SpeakerRepository _speakerRepository;
+
         public SpeakerModule(RavenDBConfigurationWrapper ravenDbConfiguration)
         {
-            var speakerRepository = new SpeakerRepository(ravenDbConfiguration.DocumentStore);
+            _speakerRepository = new SpeakerRepository(ravenDbConfiguration.DocumentStore);
 
             Get["/speakers"] = parameter =>
             {
-                return speakerRepository.GetAllSpeakers();
+                return _speakerRepository.GetAllSpeakers();
             };
 
             Get["/speakers/{id}"] = parameter =>
             {
-                return "some data of speker id : " + parameter.id;
+                return _speakerRepository.GetSpeakerById(parameter.id);                    
             };
         }
     }
