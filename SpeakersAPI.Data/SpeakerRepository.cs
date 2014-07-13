@@ -25,7 +25,7 @@ namespace SpeakersAPI.Data
                 using (var document = _documentStore.OpenSession())
                 {
                     result = document.Query<SpeakerDocument>().ToList();
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -33,6 +33,26 @@ namespace SpeakersAPI.Data
             }
 
             return result;
-        }        
+        }
+
+        public SpeakerDocument GetSpeakerById(string id)
+        {
+            SpeakerDocument result;
+            var idOfDocument = string.Format("Speakerdocuments/{0}", id);
+            try
+            {
+                using (var document = _documentStore.OpenSession())
+                {
+                    result = document.Load<SpeakerDocument>(idOfDocument);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
     }
 }
