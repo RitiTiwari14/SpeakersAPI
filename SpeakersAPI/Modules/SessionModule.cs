@@ -4,16 +4,17 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using SpeakersAPI.Data;
+using SpeakersAPI.Data.Interfaces;
 
 namespace SpeakersAPI.Modules
 {
     public class SessionModule : NancyModule 
     {
-        private readonly SessionRepository _sessionRepository;
+        private readonly ISessionRepository _sessionRepository;
 
-        public SessionModule(RavenDBConfigurationWrapper ravenDbConfiguration)
+        public SessionModule(ISessionRepository sessionRepository)
         {
-            _sessionRepository = new SessionRepository(ravenDbConfiguration.DocumentStore);
+            _sessionRepository = sessionRepository;            
 
             Get["/sessions"] = parameter =>
             {

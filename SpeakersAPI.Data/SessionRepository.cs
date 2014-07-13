@@ -11,10 +11,10 @@ namespace SpeakersAPI.Data
     public class SessionRepository : ISessionRepository
     {
         private readonly IDocumentStore _documentStore;
-
-        public SessionRepository(IDocumentStore documentStore)
+        
+        public SessionRepository(RavenDBConfigurationWrapper ravenDbConfiguration)
         {
-            _documentStore = documentStore;
+            _documentStore = ravenDbConfiguration.DocumentStore;
         }
 
         public SessionDocument GetSessionByName(string nameOfDocument)

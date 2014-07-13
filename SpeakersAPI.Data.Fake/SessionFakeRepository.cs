@@ -10,20 +10,41 @@ namespace SpeakersAPI.Data.Fake
 {
     public class SessionFakeRepository : ISessionRepository
     {
+        private List<SessionDocument> _dataSource = new List<SessionDocument>
+        {            
+            new SessionDocument(){Name = "First session", Description = "first session about something", Id="SessionDocuments/1", DateOfStart=DateTime.Now, DateOfEnd=DateTime.Now},
+            new SessionDocument(){Name = "Second session", Description = "second session about something", Id="SessionDocuments/2", DateOfStart=DateTime.Now, DateOfEnd=DateTime.Now},
+            new SessionDocument(){Name = "Third session", Description = "third session about something", Id="SessionDocuments/3", DateOfStart=DateTime.Now, DateOfEnd=DateTime.Now},
+            new SessionDocument(){Name = "Fourth session", Description = "fourth session about something", Id="SessionDocuments/4", DateOfStart=DateTime.Now, DateOfEnd=DateTime.Now},
+        };
 
         public SessionDocument GetSessionByName(string nameOfDocument)
         {
-            throw new NotImplementedException();
+            return new SessionDocument()
+            {
+                Name = "First session",
+                Description = "first session about something",
+                Id = "SessionDocuments/1",
+                DateOfStart = DateTime.Now,
+                DateOfEnd = DateTime.Now
+            };
         }
 
         public SessionDocument GetSessionById(string id)
         {
-            throw new NotImplementedException();
+            return new SessionDocument()
+            {
+                Name = "First session",
+                Description = "first session about something",
+                Id = "SessionDocuments/1",
+                DateOfStart = DateTime.Now,
+                DateOfEnd = DateTime.Now
+            };
         }
 
         public IEnumerable<SessionDocument> GetAllSessions()
         {
-            throw new NotImplementedException();
+            return _dataSource;
         }
     }
 }

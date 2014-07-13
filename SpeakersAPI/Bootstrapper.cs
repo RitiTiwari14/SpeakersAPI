@@ -1,6 +1,8 @@
 ﻿using Nancy;
 using Raven.Client;
 using SpeakersAPI.Data;
+using SpeakersAPI.Data.Fake;
+using SpeakersAPI.Data.Interfaces;
 
 namespace SpeakersAPI
 {
@@ -16,6 +18,9 @@ namespace SpeakersAPI
         }
         protected override void ConfigureApplicationContainer(Nancy.TinyIoc.TinyIoCContainer container)
         {
+            container.Register<ISessionRepository, SessionFakeRepository>().AsMultiInstance();
+
+
             container.Register<RavenDBConfigurationWrapper>().AsSingleton();
         }
         

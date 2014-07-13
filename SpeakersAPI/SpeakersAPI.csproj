@@ -99,6 +99,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SpeakersAPI.Data.Fake\SpeakersAPI.Data.Fake.csproj">
+      <Project>{4eac63c5-a9f6-469e-b403-dadd08790f12}</Project>
+      <Name>SpeakersAPI.Data.Fake</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpeakersAPI.Data\SpeakersAPI.Data.csproj">
       <Project>{78ef2771-8a2e-4699-9df6-ba64d6eeef6b}</Project>
       <Name>SpeakersAPI.Data</Name>
