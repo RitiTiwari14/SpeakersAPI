@@ -6,9 +6,10 @@ using Raven;
 using Raven.Client.Embedded;
 using SpeakersAPI.Data.Documents;
 using Raven.Client;
+using SpeakersAPI.Data.Interfaces;
 namespace SpeakersAPI.Data
 {
-    public class SpeakerRepository
+    public class SpeakerRepository : ISpeakerRepository
     {
         private readonly IDocumentStore _documentStore;
 
