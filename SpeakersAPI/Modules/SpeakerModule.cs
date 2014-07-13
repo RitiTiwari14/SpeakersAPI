@@ -4,16 +4,17 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using SpeakersAPI.Data;
+using SpeakersAPI.Data.Interfaces;
 
 namespace SpeakersAPI.Modules
 {
     public class SpeakerModule : NancyModule
     {
-        private readonly SpeakerRepository _speakerRepository;
+        private readonly ISpeakerRepository _speakerRepository;
 
-        public SpeakerModule(RavenDBConfigurationWrapper ravenDbConfiguration)
+        public SpeakerModule(ISpeakerRepository speakerRepository)
         {
-            _speakerRepository = new SpeakerRepository(ravenDbConfiguration.DocumentStore);
+            _speakerRepository = speakerRepository;
 
             Get["/speakers"] = parameter =>
             {

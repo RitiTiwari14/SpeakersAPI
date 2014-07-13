@@ -17,11 +17,23 @@ namespace SpeakersAPI
             base.ApplicationStartup(container, pipelines);
         }
         protected override void ConfigureApplicationContainer(Nancy.TinyIoc.TinyIoCContainer container)
-        {
-            container.Register<ISessionRepository, SessionFakeRepository>().AsMultiInstance();
-
-
+        {            
             container.Register<RavenDBConfigurationWrapper>().AsSingleton();
+            LoadRepositories(container);
+        }       
+
+        private void LoadRepositories(Nancy.TinyIoc.TinyIoCContainer container)
+        {
+            if (bool.Parse(System.Web.Configuration.WebConfigurationManager.AppSettings["fakeRepositories"]))
+            {
+                container.Register<ISessionRepository, SessionFakeRepository>().AsMultiInstance();
+                container.Register<ISpeakerRepository, SpeakerFakeRepository>().AsMultiInstance();
+            }
+            else
+            {
+                container.Register<ISessionRepository, SessionRepository>().AsMultiInstance();
+                container.Register<ISpeakerRepository, SpeakerRepository>().AsMultiInstance();
+            }            
         }
         
     }

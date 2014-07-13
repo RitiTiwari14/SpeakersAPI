@@ -13,9 +13,9 @@ namespace SpeakersAPI.Data
     {
         private readonly IDocumentStore _documentStore;
 
-        public SpeakerRepository(IDocumentStore documentStore)
+        public SpeakerRepository(RavenDBConfigurationWrapper ravenDbConfiguration)
         {
-            _documentStore = documentStore;
+            _documentStore = ravenDbConfiguration.DocumentStore;
         }
 
         public IEnumerable<SpeakerDocument> GetAllSpeakers()
