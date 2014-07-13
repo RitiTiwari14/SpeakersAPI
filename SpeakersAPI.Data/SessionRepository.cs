@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Raven.Client;
+using SpeakersAPI.Data.Interfaces;
 
 namespace SpeakersAPI.Data
 {
-    public class SessionRepository
+    public class SessionRepository : ISessionRepository
     {
         private readonly IDocumentStore _documentStore;
 
